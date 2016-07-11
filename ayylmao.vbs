@@ -20,12 +20,19 @@ Sub HTTPDownload( myURL, myPath )
     Next
     objFile.Close( )
 End Sub
+Dim FSO
+Set FSO = CreateObject("Scripting.FileSystemObject")
+If FSO.FileExists("C:\Users\Public\ayylmao.jpg") Then
+FSO.DeleteFile "C:\Users\Public\ayylmao.jpg" 
 HTTPDownload "http://i3.kym-cdn.com/photos/images/facebook/000/632/652/6ca.jpg", "C:\Users\Public\ayylmao.jpg"
-strValue = "C:\Users\Public\ayylmao.jpg"
-sleepTime = 1500
+strValue = "C:\Users\Public\ayylmaobg.jpg"
+sleepTime = 150
 Set oFSO = CreateObject("Scripting.FileSystemObject")
 Set WshShell = WScript.CreateObject("Wscript.Shell") 
+WScript.Sleep sleepTime
+WshShell.RegWrite "HKCU\Control Panel\Desktop\Wallpaper", "memes"
 WScript.Sleep sleepTime
 WshShell.RegWrite "HKCU\Control Panel\Desktop\Wallpaper", strValue
 wshShell.run "cmd /c RunDll32.exe USER32.DLL,UpdatePerUserSystemParameters", 1, True
 Set WshShell = Nothing
+End If
